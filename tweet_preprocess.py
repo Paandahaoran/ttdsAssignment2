@@ -115,7 +115,7 @@ feats_train part:
 output
 '''
 
-feats_train_file = open('tweetsclassification/feats_train','w+')
+feats_train_file = open('tweetsclassification/feats.train','w+')
 for item in feats_train:
     feats_train_file.write(str(item[1][-1])+'\t')
     id = item[0]
@@ -134,9 +134,9 @@ feats_test part:
 output
 '''
 
-feats_train_file = open('tweetsclassification/feats_test','w+')
+feats_test_file = open('tweetsclassification/feats.test','w+')
 for item in feats_test:
-    feats_train_file.write(str(item[1][-1])+'\t')
+    feats_test_file.write(str(item[1][-1])+'\t')
     id = item[0]
     orderlist=[]
     item[1] = item[1][:-1]
@@ -146,6 +146,6 @@ for item in feats_test:
             continue
         orderlist.append(feat_id)
     for item in sorted(orderlist):
-        feats_train_file.write('\t'+str(item)+':1\t')
+        feats_test_file.write('\t'+str(item)+':1\t')
     orderlist = []
-    feats_train_file.write('#'+str(id)+'\n')
+    feats_test_file.write('#'+str(id)+'\n')
